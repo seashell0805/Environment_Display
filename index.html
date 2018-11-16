@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script>
+			var socket = io();
+			//When we get the 'data" message...
+			socket.on('photon_data', function(data)
+			{
+				//Add the message to the #messages list
+				$('#messages').append($('<li>').text(data));
+
+//				//Send a random number
+				socket.emit('to_serial', 1);
+//                socket.emit('to_serial', Math.floor(Math.random() * 100));
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="messages"></ul>
+	</body>
+</html>
